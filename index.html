@@ -366,9 +366,59 @@
 
   <footer>
     &copy; 2026 LifeSync &nbsp;·&nbsp;
-    <a href="#">Datenschutz</a> &nbsp;·&nbsp;
-    <a href="#">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
+    <a href="impressum.html">Impressum</a>
   </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" style="
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0a0a0a;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    max-width: 520px;
+    width: calc(100% - 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 999;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  ">
+    <span>
+      Diese Seite verwendet technisch notwendigen lokalen Speicher.
+      Mehr in unserer <a href="datenschutz.html" style="color:#fff; text-decoration:underline;">Datenschutzerklärung</a>.
+    </span>
+    <button onclick="acceptCookies()" style="
+      flex-shrink: 0;
+      background: #fff;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    ">OK</button>
+  </div>
+
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookie_ok', '1');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+    if (!localStorage.getItem('cookie_ok')) {
+      document.getElementById('cookie-banner').style.display = 'flex';
+    }
+  </script>
 
   <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 
