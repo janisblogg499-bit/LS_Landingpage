@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeSync — Jetzt auf die Warteliste</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #ffffff;
+      color: #0a0a0a;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADER ── */
+    header {
+      width: 100%;
+      max-width: 960px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #0a0a0a;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #0a0a0a;
+      border: 1px solid #d0d0d0;
+      padding: 5px 12px;
+      border-radius: 99px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 100px;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      color: #0a0a0a;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 420px;
+      margin: 0 auto 48px;
+    }
+
+    /* ── FORM ── */
+    .form-wrap {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    form {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    input[type="email"] {
+      flex: 1 1 200px;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      color: #0a0a0a;
+      font-size: 0.9rem;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    input[type="email"]::placeholder { color: #aaa; }
+
+    input[type="email"]:focus {
+      background: #fff;
+      border-color: #0a0a0a;
+    }
+
+    button[type="submit"] {
+      flex-shrink: 0;
+      background: #0a0a0a;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    button[type="submit"]:hover { background: #2a2a2a; }
+    button[type="submit"]:active { transform: scale(0.98); }
+    button[type="submit"]:disabled { background: #aaa; cursor: not-allowed; }
+
+    .form-note {
+      font-size: 0.73rem;
+      color: #aaa;
+      margin-top: 10px;
+    }
+
+    /* ── ERROR ── */
+    .form-error {
+      display: none;
+      font-size: 0.8rem;
+      color: #c0392b;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fdf2f2;
+      border: 1px solid #f5c6c6;
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    /* ── SUCCESS ── */
+    .success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 32px 24px;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      background: #fafafa;
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0a0a0a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      animation: pop 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .success strong {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0a0a0a;
+    }
+
+    .success p {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+
+    .avatars { display: flex; }
+
+    .avatars span {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-right: -7px;
+      font-size: 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .av1 { background: #0a0a0a; }
+    .av2 { background: #444; }
+    .av3 { background: #777; }
+    .av4 { background: #aaa; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      max-width: 960px;
+      border: none;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      width: 100%;
+      max-width: 960px;
+      padding: 64px 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: #e8e8e8;
+      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .feature-card {
+      background: #fff;
+      padding: 32px 28px;
+    }
+
+    .feature-icon {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px 32px;
+      color: #bbb;
+      font-size: 0.75rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { color: #0a0a0a; }
+
+    @media (max-width: 500px) {
+      header { padding: 20px; }
+      form { flex-direction: column; }
+      button[type="submit"] { width: 100%; }
+      .features { padding: 40px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">LifeSync</div>
+    <div class="badge">Beta — bald verfügbar</div>
+  </header>
+
+  <main>
+    <div class="eyebrow">Früher Zugang</div>
+
+    <h1>Dein Leben.<br />Synchronisiert.</h1>
+
+    <p class="subtitle">
+      Trag dich jetzt in die Warteliste ein und sei einer der Ersten,
+      die Zugang bekommen – inklusive exklusiver Beta-Features.
+    </p>
+
+    <div class="form-wrap">
+      <form id="signup-form">
+        <input
+          type="email"
+          id="email-input"
+          placeholder="deine@email.de"
+          required
+          autocomplete="email"
+        />
+        <button type="submit">Eintragen →</button>
+      </form>
+
+      <p class="form-note">Kein Spam. Abmeldung jederzeit möglich.</p>
+      <div class="form-error" id="form-error"></div>
+
+      <div class="success" id="success-box">
+        <div class="success-icon">✓</div>
+        <strong>Du bist auf der Liste!</strong>
+        <p>Wir melden uns, sobald dein Zugang bereit ist.</p>
+      </div>
+    </div>
+
+    <div class="social-proof">
+      <div class="avatars">
+        <span class="av1">A</span>
+        <span class="av2">M</span>
+        <span class="av3">K</span>
+        <span class="av4">J</span>
+      </div>
+      <span>Bereits <strong style="color:#0a0a0a">1.240+</strong> Personen auf der Liste</span>
+    </div>
+  </main>
+
+  <hr class="divider" />
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Blitzschnell</h3>
+      <p>Optimiert für Geschwindigkeit – von der ersten Sekunde an.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Sicher &amp; privat</h3>
+      <p>Deine Daten gehören dir. Ende-zu-Ende verschlüsselt.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✦</div>
+      <h3>Intuitiv</h3>
+      <p>Kein Onboarding nötig – einfach starten und loslegen.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 LifeSync &nbsp;·&nbsp;
+    <a href="#">Datenschutz</a> &nbsp;·&nbsp;
+    <a href="#">Impressum</a>
+  </footer>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+
+  <script>
+    const SUPABASE_URL  = 'https://jrwfuystywstrgqtityd.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impyd2Z1eXN0eXdzdHJncXRpdHlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNzgwMjAsImV4cCI6MjA5Mjc1NDAyMH0.U6QCcUo-Cz--fYgypNkew6GpAA7FHqmIGCWWe9aLTVY';
+
+    const db         = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    const form       = document.getElementById('signup-form');
+    const submitBtn  = form.querySelector('button[type="submit"]');
+    const successBox = document.getElementById('success-box');
+    const formNote   = document.querySelector('.form-note');
+    const formError  = document.getElementById('form-error');
+
+    function showError(msg) {
+      formError.textContent = msg;
+      formError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Eintragen →';
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      formError.style.display = 'none';
+
+      const email = document.getElementById('email-input').value.trim();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird eingetragen …';
+
+      const { error } = await db
+        .from('Landing_Page')
+        .insert({ email });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        if (error.code === '23505') {
+          showError('Diese E-Mail ist bereits auf der Warteliste.');
+        } else {
+          showError('Fehler: ' + error.message + ' (Code: ' + error.code + ')');
+        }
+        return;
+      }
+
+      form.style.display = 'none';
+      formNote.style.display = 'none';
+      successBox.style.display = 'flex';
+    });
+  </script>
+
+</body>
+</html>
