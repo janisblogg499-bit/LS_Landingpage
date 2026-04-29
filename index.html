@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LifeSync — Jetzt auf die Warteliste</title>
+  <title>LifeSync — Join the Waitlist</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -94,11 +94,11 @@
     form {
       display: flex;
       gap: 8px;
-      flex-wrap: wrap;
     }
 
     input[type="email"] {
-      flex: 1 1 200px;
+      flex: 1;
+      min-width: 0;
       background: #f5f5f5;
       border: 1px solid #e0e0e0;
       border-radius: 8px;
@@ -127,6 +127,7 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
     }
 
     button[type="submit"]:hover { background: #2a2a2a; }
@@ -199,37 +200,6 @@
       color: #888;
     }
 
-    /* ── SOCIAL PROOF ── */
-    .social-proof {
-      margin-top: 32px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #aaa;
-      font-size: 0.8rem;
-    }
-
-    .avatars { display: flex; }
-
-    .avatars span {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      margin-right: -7px;
-      font-size: 0.65rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .av1 { background: #0a0a0a; }
-    .av2 { background: #444; }
-    .av3 { background: #777; }
-    .av4 { background: #aaa; }
-
     /* ── DIVIDER ── */
     .divider {
       width: 100%;
@@ -286,10 +256,13 @@
     footer a { color: inherit; text-decoration: none; }
     footer a:hover { color: #0a0a0a; }
 
+    /* ── MOBILE ── */
     @media (max-width: 500px) {
-      header { padding: 20px; }
+      header { padding: 18px 20px; }
+      main { padding: 60px 20px 80px; }
       form { flex-direction: column; }
-      button[type="submit"] { width: 100%; }
+      input[type="email"] { width: 100%; }
+      button[type="submit"] { width: 100%; justify-content: center; }
       .features { padding: 40px 20px 60px; }
     }
   </style>
@@ -298,17 +271,17 @@
 
   <header>
     <div class="logo">LifeSync</div>
-    <div class="badge">Beta — bald verfügbar</div>
+    <div class="badge">Beta — Coming soon</div>
   </header>
 
   <main>
-    <div class="eyebrow">Früher Zugang</div>
+    <div class="eyebrow">Early Access</div>
 
-    <h1>Dein Leben.<br />Synchronisiert.</h1>
+    <h1>Your Life.<br />Synchronized.</h1>
 
     <p class="subtitle">
-      Trag dich jetzt in die Warteliste ein und sei einer der Ersten,
-      die Zugang bekommen – inklusive exklusiver Beta-Features.
+      Join the waitlist and be among the first to get access —
+      including exclusive beta features and early adopter benefits.
     </p>
 
     <div class="form-wrap">
@@ -316,31 +289,21 @@
         <input
           type="email"
           id="email-input"
-          placeholder="deine@email.de"
+          placeholder="your@email.com"
           required
           autocomplete="email"
         />
-        <button type="submit">Eintragen →</button>
+        <button type="submit">Join →</button>
       </form>
 
-      <p class="form-note">Kein Spam. Abmeldung jederzeit möglich.</p>
+      <p class="form-note">No spam. Unsubscribe anytime.</p>
       <div class="form-error" id="form-error"></div>
 
       <div class="success" id="success-box">
         <div class="success-icon">✓</div>
-        <strong>Du bist auf der Liste!</strong>
-        <p>Wir melden uns, sobald dein Zugang bereit ist.</p>
+        <strong>You're on the list!</strong>
+        <p>We'll reach out as soon as your access is ready.</p>
       </div>
-    </div>
-
-    <div class="social-proof">
-      <div class="avatars">
-        <span class="av1">A</span>
-        <span class="av2">M</span>
-        <span class="av3">K</span>
-        <span class="av4">J</span>
-      </div>
-      <span>Bereits <strong style="color:#0a0a0a">1.240+</strong> Personen auf der Liste</span>
     </div>
   </main>
 
@@ -349,25 +312,25 @@
   <section class="features">
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
-      <h3>Blitzschnell</h3>
-      <p>Optimiert für Geschwindigkeit – von der ersten Sekunde an.</p>
+      <h3>Lightning fast</h3>
+      <p>Optimized for speed — from the very first second.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔒</div>
-      <h3>Sicher &amp; privat</h3>
-      <p>Deine Daten gehören dir. Ende-zu-Ende verschlüsselt.</p>
+      <h3>Secure &amp; private</h3>
+      <p>Your data belongs to you. End-to-end encrypted.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">✦</div>
-      <h3>Intuitiv</h3>
-      <p>Kein Onboarding nötig – einfach starten und loslegen.</p>
+      <h3>Intuitive</h3>
+      <p>No onboarding needed — just start and go.</p>
     </div>
   </section>
 
   <footer>
     &copy; 2026 LifeSync &nbsp;·&nbsp;
-    <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
-    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="impressum.html">Imprint</a>
   </footer>
 
   <!-- Cookie Banner -->
@@ -385,7 +348,6 @@
     line-height: 1.5;
     max-width: 520px;
     width: calc(100% - 48px);
-    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
@@ -393,8 +355,8 @@
     box-shadow: 0 4px 24px rgba(0,0,0,0.15);
   ">
     <span>
-      Diese Seite verwendet technisch notwendigen lokalen Speicher.
-      Mehr in unserer <a href="datenschutz.html" style="color:#fff; text-decoration:underline;">Datenschutzerklärung</a>.
+      This site uses technically necessary local storage.
+      See our <a href="datenschutz.html" style="color:#fff; text-decoration:underline;">Privacy Policy</a>.
     </span>
     <button onclick="acceptCookies()" style="
       flex-shrink: 0;
@@ -437,7 +399,7 @@
       formError.textContent = msg;
       formError.style.display = 'block';
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Eintragen →';
+      submitBtn.textContent = 'Join →';
     }
 
     form.addEventListener('submit', async function (e) {
@@ -446,7 +408,7 @@
 
       const email = document.getElementById('email-input').value.trim();
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Wird eingetragen …';
+      submitBtn.textContent = 'Saving …';
 
       const { error } = await db
         .from('Landing_Page')
@@ -455,9 +417,9 @@
       if (error) {
         console.error('Supabase error:', error);
         if (error.code === '23505') {
-          showError('Diese E-Mail ist bereits auf der Warteliste.');
+          showError('This email is already on the waitlist.');
         } else {
-          showError('Fehler: ' + error.message + ' (Code: ' + error.code + ')');
+          showError('Error: ' + error.message + ' (Code: ' + error.code + ')');
         }
         return;
       }
